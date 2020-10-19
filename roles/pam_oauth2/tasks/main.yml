@@ -1,0 +1,35 @@
+- name: Install oauth2 pam module
+  copy:
+    dest: /usr/lib64/security/
+    src: pam_oauth2_device.so
+- name: Create oauth2 pam module config dir
+  file: 
+    path: /etc/pam_oauth2_device/
+    state: directory
+- name: Create oauth2 pam module config file
+  copy:
+    dest: /etc/pam_oauth2_device/config.json
+    content: |
+      {
+        "oauth": {
+          "client": {
+            "id": "08c9ffac-08b7-4c62-abc7-97f6b1228d3f",
+            "secret": "HZ0f7ULht4q1yIzu7wZencuPvy2bOXLRdoC9I0ltkig"
+          },
+          "scope": "openid profile",
+          "device_endpoint":"https://auth.molgenis.org/oauth2/device_authorize", 
+          "token_endpoint": "https://auth.molgenis.org/oauth2/token",
+          "userinfo_endpoint": "https://auth.molgenis.org/oauth2/userinfo",
+          "username_attribute": "email"
+        },
+        "qr": {
+          "error_correction_level": 0
+        },
+        "users": {
+          "f.kelpin@umcg.nl":
+          [
+              "root",
+              "vagrant"
+          ]
+        }
+      }
