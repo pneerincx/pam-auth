@@ -1,4 +1,0 @@
-
-yum install epel-release
-yum install pamtester
-/usr/lib64/security/pam.so

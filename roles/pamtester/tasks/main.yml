@@ -1,0 +1,14 @@
+- name: Add EPEL release
+  yum:
+    name: epel-release
+    state: latest
+- name: Add pamtester
+  yum:
+    name: pamtester
+    state: latest
+    enablerepo: "epel"
+- name: Configure pamtester service
+  copy:
+    dest: /etc/pam.d/pamtester
+    content: |
+      auth required pam_oauth2_device.so /etc/pam_oauth2_device/config.json
