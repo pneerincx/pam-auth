@@ -4,7 +4,7 @@ Based on: https://github.com/ICS-MU/pam_oauth2_device/
 
 ## Usage
 
-```
+```bash
 # initialize
 #vagrant init?
 vagrant up
